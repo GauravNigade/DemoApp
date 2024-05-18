@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">demo_app</string>
+    <string name="search">Customer name/Account No/Mobile</string>
+</resources>
