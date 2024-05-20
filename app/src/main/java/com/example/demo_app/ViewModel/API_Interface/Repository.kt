@@ -30,7 +30,7 @@ class Repository {
                 }
                 override fun onFailure(call: Call<CustumerResponseModel>, t: Throwable) {
 
-                    Log.e("REpository" ,"Error Failed")
+                    Log.e("Repository" ,"Error Failed")
                 }
             })
         return getCustomerData
