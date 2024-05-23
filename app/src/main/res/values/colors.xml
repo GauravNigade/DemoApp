@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="white1">#85B7BD</color>
     <color name="colorGrey">#595151</color>
+    <color name="progresscolor">#134EE4</color>
+    <style name="progress">
+        <item name="android:progressTint"> @color/progresscolor</item>
+    </style>
 </resources>

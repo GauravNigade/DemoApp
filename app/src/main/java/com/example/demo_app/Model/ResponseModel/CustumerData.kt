@@ -1,6 +1,6 @@
 package com.example.demo_app.Model.ResponseModel
 
-data class CustumerData(
+data class CustumerData1(
     val CustomerId: Int,
     val FName: String,
     val IsBuffalo: Int,
