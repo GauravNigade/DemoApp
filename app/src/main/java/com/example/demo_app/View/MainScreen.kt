@@ -1,12 +1,16 @@
 package com.example.demo_app.View
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,6 +45,7 @@ class MainScreen : AppCompatActivity() {
         mAdapterReport.notifyDataSetChanged()
         binding.rvCustomerList.layoutManager = mLinearLayoutManager
     }
+    @SuppressLint("SuspiciousIndentation")
     private fun getCustomerData(){
         getCustumerViewModel.callCustumerData()
         binding.progress.visibility = View.VISIBLE
@@ -64,5 +69,24 @@ class MainScreen : AppCompatActivity() {
                 } catch (ignored: Exception) {
                 }
             })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.search_menu, menu)
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as androidx.appcompat.widget.SearchView
+        searchView.imeOptions = EditorInfo.IME_ACTION_DONE
+
+        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                mAdapterReport.filter.filter(newText)
+                return true
+            }
+        })
+        return true
     }
 }
